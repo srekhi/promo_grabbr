@@ -1,0 +1,25 @@
+{
+  "name": "promo_grabbr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srekhi/promo_grabbr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srekhi/promo_grabbr/issues"
+  },
+  "homepage": "https://github.com/srekhi/promo_grabbr#readme",
+  "dependencies": {
+    "react": "^16.2.0",
+    "redux": "^3.7.2"
+  }
+}
