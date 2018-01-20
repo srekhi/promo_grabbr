@@ -11,7 +11,7 @@ import { RECEIVE_CURRENT_USER,
 const defaultState = Object.freeze({
   currentUser: null,
   errors: [],
-  notifications: []
+  companies: []
 });
 
 const SessionReducer = (state = defaultState, action) => {
@@ -32,22 +32,19 @@ const SessionReducer = (state = defaultState, action) => {
       newState = merge({}, state);
       newState['errors'] = [];
       return newState;
-    case RECEIVE_NOTIFICATIONS:
+    case RECEIVE_COMPANIES:
       newState = merge({}, state);
-      newState['notifications'] = action.notifications;
+      newState['companies'] = action.companies;
       return newState;
     case RECEIVE_NOTIFICATION:
       newState = merge({}, state);
-      if (!newState['notifications'].includes(action.notification)){
-      newState['notifications'].push(action.notification);
+      if (!newState['companies'].includes(action.company)){
+      newState['companies'].push(action.company);
     }
       return newState;
-    case REMOVE_NOTIFICATIONS:
+    case REMOVE_COMPANIES:
       newState = merge({}, state);
-      // debugger;
-      newState.notifications = state.notifications.filter(notification =>(
-        notification.channel_id !== parseInt(action.channel_id)
-      ));
+      newState.companies = [];
       return newState;
     default:
       return state;

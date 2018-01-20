@@ -7,7 +7,6 @@ export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
 export const RECEIVE_NOTIFICATION = 'RECEIVE_NOTIFICATION';
 export const REMOVE_COMPANIES = 'REMOVE_COMPANIES';
 
-
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
