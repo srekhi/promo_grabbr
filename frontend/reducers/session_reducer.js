@@ -32,20 +32,7 @@ const SessionReducer = (state = defaultState, action) => {
       newState = merge({}, state);
       newState['errors'] = [];
       return newState;
-    case RECEIVE_COMPANIES:
-      newState = merge({}, state);
-      newState['companies'] = action.companies;
-      return newState;
-    case RECEIVE_NOTIFICATION:
-      newState = merge({}, state);
-      if (!newState['companies'].includes(action.company)){
-      newState['companies'].push(action.company);
-    }
-      return newState;
-    case REMOVE_COMPANIES:
-      newState = merge({}, state);
-      newState.companies = [];
-      return newState;
+
     default:
       return state;
   }

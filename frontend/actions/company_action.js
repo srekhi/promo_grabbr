@@ -15,3 +15,9 @@ export const receiveCompanies = companies => ({
 export const clearCompanies = () => ({
   type: CLEAR_COMPANIES
 });
+
+export const fetchCompanies = () => ({ // get the companies that the user is already subscribed to
+});
+
+export const addCompany = () => ({ /
+});
