@@ -1,2 +1,8 @@
-settings.py
 client_secret.json
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
