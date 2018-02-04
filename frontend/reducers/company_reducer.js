@@ -3,12 +3,12 @@ import merge from 'lodash/merge';
 import {
   RECEIVE_COMPANIES,
   RECEIEVE_COMPANY,
+  RECEIVE_COMPANY_ERRORS,
+  CLEAR_COMPANY_ERRORS,
   CLEAR_COMPANIES,
 } from '../actions/company_actions';
 
-const defaultState = { };
-
-const CompanyReducer = (state = defaultState, action) => {
+const CompanyReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = merge({}, state);
   switch(action.type) {
@@ -20,6 +20,12 @@ const CompanyReducer = (state = defaultState, action) => {
       if (!newState[company.id]){
         newState[company.id].push(company);
       }
+      return newState;
+    case RECEIVE_COMPANY_ERRORS:
+      newState['errors'] = action.errors;
+      return newState;
+    case CLEAR_COMPANY_ERRORS:
+      newState['errors'] = [];
       return newState;
     case CLEAR_COMPANIES:
       newState.companies = [];

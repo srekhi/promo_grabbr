@@ -2,10 +2,10 @@ import { combineReducers } from 'redux';
 import CompanyReducer from './company_reducer';
 import sessionReducer from './session_reducer';
 
-
 const AppReducer = combineReducers({
   users: UserReducer,
-  companies: CompanyReducer
+  companies: CompanyReducer,
+  session: SessionReducer
 });
 
 const RootReducer = (state, action) => {
