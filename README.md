@@ -4,7 +4,7 @@
 
 ### Requirements
 
-* Python 3
+* Python 3.6.4
 * Django 2
 * PostgreSQL 9
 
