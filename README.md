@@ -27,7 +27,7 @@ CREATE DATABASE promograbber;
 
 Create the user:
 ```sql
-CREATE USER promograbber_user;
+CREATE USER promograbber_user WITH PASSWORD 'promograbber_user';
 ```
 
 Set default configurations:
