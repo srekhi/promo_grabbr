@@ -22,5 +22,5 @@ from . import views
 urlpatterns = [
     path('', views.index),
     path('console/', admin.site.urls),
-    path('rest-auth/', include('rest_auth.urls')),
+    path('api/', include('api.urls')),
 ]
