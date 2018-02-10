@@ -4,7 +4,7 @@ var path = require('path');
 module.exports = {
   entry: "./frontend/promo_grabbr.jsx",
   output: {
-      path: path.resolve(__dirname, 'app', 'assets', 'javascripts'), // TODO (sunny): figure out where we want to output assets
+      path: path.resolve(__dirname, 'static', 'promo_grabbr'),
       filename: "bundle.js"
   },
   module: {
