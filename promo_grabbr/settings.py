@@ -99,17 +99,6 @@ REST_FRAMEWORK = {
 
 ACCOUNT_USERNAME_REQUIRED = False
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
