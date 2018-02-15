@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
 import CompanyReducer from './company_reducer';
-import sessionReducer from './session_reducer';
+import SessionReducer from './session_reducer';
 
 const AppReducer = combineReducers({
-  users: UserReducer,
   companies: CompanyReducer,
   session: SessionReducer
 });
