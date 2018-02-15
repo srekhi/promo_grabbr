@@ -65,7 +65,7 @@ Set up OAuth:
 3. Create a new social app (`http://localhost:8000/console/socialaccount/socialapp/`) and add Google as a provider, fill in the relevant credentials
 
 ### Frontend
-Install frontend assets:
+Install frontend dependencies:
 ```
 npm install
 ```
