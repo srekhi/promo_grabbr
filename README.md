@@ -65,5 +65,11 @@ Set up OAuth:
 3. Create a new social app (`http://localhost:8000/console/socialaccount/socialapp/`) and add Google as a provider, fill in the relevant credentials
 
 ### Frontend
-Install frontend assets via `npm install`.
-In development mode, run `npm run webpack` to kick off javascript build (this automatically kicks off watchman as well).
+Install frontend assets:
+```
+npm install
+```
+In development mode: kick off javascript build + watchman:
+``` 
+npm run webpack 
+```
