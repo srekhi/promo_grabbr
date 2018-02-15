@@ -41,5 +41,5 @@ Give user all access to database:
 ```sql
 GRANT ALL PRIVILEGES ON DATABASE promograbber TO promograbber_user;
 ```
-
-In development mode, run `npm run webpack` to kick off javascript build (this automatically kicks off watchman as well).
+### Frontend
+Run `npm run webpack` to kick off javascript build (this automatically kicks off watchman as well).
