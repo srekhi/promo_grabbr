@@ -26,7 +26,7 @@ module.exports = {
   context: __dirname,
   entry: "./frontend/promo_grabbr.jsx",
   output: {
-    path: path.resolve(__dirname, 'static', 'promo_grabbr', ),
+    path: path.resolve(__dirname, 'promo_grabbr', 'static', 'promo_grabbr'),
     filename: "bundle.js"
   },
   plugins: plugins,
