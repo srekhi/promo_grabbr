@@ -1,15 +1,17 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-//import { login, logout, signup, clearErrors } from '../../../actions/session_actions';
+import { googleLogin } from '../../actions/auth_actions';
 import GoogleAuth from './google';
 
 const mapStateToProps = (state) => ({
-  clientId: state.clientId,
-  scopes: state.scopes
+  clientId: state.auth.clientId,
+  scopes: state.auth.scopes
 });
 
 const mapDispatchToProps = (dispatch) => {
-  return null;
+  return {
+    googleLogin: authCode => dispatch(googleLogin(authCode))
+  };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GoogleAuth));
+export default connect(mapStateToProps, mapDispatchToProps)(GoogleAuth);

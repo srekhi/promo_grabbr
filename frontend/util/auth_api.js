@@ -3,7 +3,7 @@ export const googleAuth = code => (
         method: 'POST',
         url: '/api/auth/google',
         data: { 
-            code: code
+            token: code
         }
     })
   );

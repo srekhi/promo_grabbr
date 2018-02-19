@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import AuthGoogleContainer from './auth/google_container';
 // import HomeContainer from './home/home_container.jsx';
 import SplashPage from './splash_page/splash_page';
 // import Spinner from './spinner.jsx';
@@ -8,6 +9,8 @@ import './index.css'
 
 const App = () => (
     <div>
+        <div>ayy this is react</div>
+        <Route component={AuthGoogleContainer} />
         <Switch>
           {/*<ProtectedRoute exact path="/" component={HomeContainer} />*/}
           {/*<ProtectedRoute path="/messages/:messageId" component={HomeContainer} />*/}
