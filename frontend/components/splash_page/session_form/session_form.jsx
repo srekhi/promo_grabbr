@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 import faker from 'faker';
+import styles from './session_form.css'
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -84,7 +85,7 @@ class SessionForm extends React.Component {
             clearInterval(slowPassInput);
           }
           if (username.length === 0 && password.length === 0){
-            self.props.signup(user).then(()=> self.props.history.push("/"));
+            self.props.signup(user).then(() => self.props.history.push("/"));
           }
         }, timeout);
       }
@@ -146,7 +147,7 @@ class SessionForm extends React.Component {
                 className="login-input"
               />
               <button className="login-button" type="submit" value="Submit">{capitalizedFormType}</button>
-              <p id="demo-login">{this.navLink()} or continue with a <a onClick={this.demoLogin} href="">guest login!</a></p>
+              <p id="demo-login">{this.navLink()}</p>
               {this.renderErrors()}
           </form>
         </div>

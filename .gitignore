@@ -1,8 +1,7 @@
 client_secret.json
 node_modules/
-*.bundle.js
-*.bundle.js.map
-static/
+bundle.js
+bundle.js.map
 ### Django ###
 *.log
 *.pot
