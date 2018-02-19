@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 import faker from 'faker';
 import styles from './session_form.css'
+import AuthGoogleContainer from '../../auth/google_container';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -148,6 +149,7 @@ class SessionForm extends React.Component {
               />
               <button className="login-button" type="submit" value="Submit">{capitalizedFormType}</button>
               <p id="demo-login">{this.navLink()}</p>
+              <AuthGoogleContainer />
               {this.renderErrors()}
           </form>
         </div>
