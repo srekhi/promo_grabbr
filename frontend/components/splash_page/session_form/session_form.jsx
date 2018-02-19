@@ -147,7 +147,7 @@ class SessionForm extends React.Component {
                 className="login-input"
               />
               <button className="login-button" type="submit" value="Submit">{capitalizedFormType}</button>
-              <p id="demo-login">{this.navLink()} or continue with a <a onClick={this.demoLogin} href="">guest login!</a></p>
+              <p id="demo-login">{this.navLink()}</p>
               {this.renderErrors()}
           </form>
         </div>
