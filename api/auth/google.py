@@ -5,6 +5,7 @@ from django.conf import settings
 
 
 class GoogleLogin(SocialLoginView):
+    authentication_classes = ()
     adapter_class = GoogleOAuth2Adapter
     client_class = OAuth2Client
     callback_url = settings.GOOGLE_CALLBACK_URL
