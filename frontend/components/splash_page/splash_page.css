@@ -69,7 +69,6 @@ body {
 
 .session-form > p {
   text-align: center;
-  fonts-size: 20px;
   display: block;
   -webkit-margin-before: 1em;
   -webkit-margin-after: 1em;
@@ -120,7 +119,6 @@ body {
  min-height: 100%;
  width: auto;
  height: auto;
- webkit-transform: translate(-50%, -50%);
  -webkit-transform: translate(-50%, -50%);
          transform: translate(-50%, -50%);
  z-index: -100;
