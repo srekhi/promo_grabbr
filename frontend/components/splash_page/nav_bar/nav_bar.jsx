@@ -17,7 +17,7 @@ class Navbar extends React.Component {
           <p id="tagline">Don't miss a deal again.</p>
         </section>
         <section id="logo-container">
-          <p id="tagline">About us</p>
+          <p id="about-us">How does this work?</p>
         </section>
       </nav>
     );
