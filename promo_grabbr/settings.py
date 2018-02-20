@@ -86,19 +86,24 @@ WSGI_APPLICATION = 'promo_grabbr.wsgi.application'
 
 SITE_ID = 1
 
+GOOGLE_CALLBACK_URL = 'http://localhost:8000'
+
 # Rest Framework Settings
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
     )
 }
 
 # Allauth Settings
 
 ACCOUNT_USERNAME_REQUIRED = False
-
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
