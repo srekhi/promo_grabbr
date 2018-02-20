@@ -14,6 +14,11 @@ const CompanyReducer = (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_COMPANIES:
         return action.companies;
+    case REMOVE_COMPANY:
+        company = action.company;
+        newState = merge({}, state);
+        delete newState.company;
+        return newState;
     case RECEIVE_COMPANY:
       company = action.company
       newState = merge({}, state);

@@ -5,6 +5,7 @@ export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
 export const CLEAR_COMPANIES = 'CLEAR_COMPANIES';
 export const RECEIVE_COMPANY_ERRORS = 'RECEIVE_COMPANY_ERRORS';
 export const CLEAR_COMPANY_ERRORS = 'CLEAR_COMPANY_ERRORS';
+export const REMOVE_COMPANY = 'REMOVE_COMPANY';
 
 export const receiveCompany = company => ({
   type: RECEIEVE_COMPANY,
@@ -15,6 +16,12 @@ export const receiveCompanies = companies => ({
   type: RECEIEVE_COMPANIES,
   companies
 });
+
+export const removeCompany = company => ({
+  type: REMOVE_COMPANY,
+  company
+});
+
 
 export const clearCompanies = () => ({
   type: CLEAR_COMPANIES
@@ -34,5 +41,9 @@ export const fetchCompanies = (user_id) => (dispatch) => (
 );
 
 export const addCompany = (user_id, company_id) => (dispatch) => (
-	APIUtil.fetchCompanies(user_id, company_id).then((companies) => dispatch(receiveCompanies(companies)))
+  APIUtil.addCompany(user_id, company_id).then((company) => dispatch(receiveCompany(company)))
+);
+
+export const deleteCompany = (user_id, company_id) => (dispatch) => (
+  APIUtil.deleteCompany(user_id, company_id).then((company) => dispatch(deleteCompany(company)))
 );

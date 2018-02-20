@@ -6,7 +6,7 @@ export const fetchCompanies = (user_id) => (
   })
 );
 
-export const addCompany = (company_id, user_id) => (
+export const addCompany = (user_id, company_id) => (
   $.ajax({
     method: 'POST',
     url: `/api/companies/`,
@@ -14,7 +14,7 @@ export const addCompany = (company_id, user_id) => (
   })
 );
 
-export const removeCompany = (company_id, user_id) => (
+export const deleteCompany = (user_id, company_id) => (
   $.ajax({
     method: 'DELETE',
     url: `/api/companies/`,
