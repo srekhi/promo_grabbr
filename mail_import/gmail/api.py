@@ -53,7 +53,7 @@ class GmailAPIService(object):
 
             while 'nextPageToken' in response:
                 pageToken = response['nextPageToken']
-                response = service.users().messages().list(
+                response = self.service.users().messages().list(
                     userId='me',
                     q=searchQuery,
                     pageToken=pageToken
