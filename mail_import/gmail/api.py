@@ -60,6 +60,34 @@ class GmailAPIService(object):
 
         return messages
 
+    def getMessages(self, messageIds, callbackSuccess, callbackFail=None):
+        """
+        Batches the request to get messages by ID.
+
+        Args:
+            messageIds: List of message ids
+            callbackSuccess: Function that will be called for each successful response
+            callbackFail: Function that will be called for each error response
+        """
+
+        def _callback(request_id, response, exception):
+            if exception is not None:
+                return callbackFail and callbackFail(messageId, exception)
+
+            callbackSuccess(response)
+
+        for i in range(0, len(messageIds), self.BATCH_SIZE):
+            batch = self.service.new_batch_http_request(callback=_callback)
+
+            for messageId in messageIds[i:i+self.BATCH_SIZE]:
+                request = self.service.users().messages().get(
+                    userId='me',
+                    id=messageId
+                )
+                batch.add(request, request_id=messageId)
+
+            batch.execute()
+
     @classmethod
     def _query_term(cls, searchType, value):
         return '{}:{}'.format(searchType, value)
