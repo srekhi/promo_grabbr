@@ -3,10 +3,12 @@ from django.utils.functional import cached_property
 from apiclient import discovery
 from apiclient import errors
 from oauth2client import GOOGLE_TOKEN_URI
-from oauth2client.client import GoogleCredentials
+
+from .store import GoogleCredentialStorage
 
 
 class GmailAPIService(object):
+    BATCH_SIZE = 1000
 
     def __init__(self, socialToken):
         self.socialToken = socialToken
@@ -17,22 +19,15 @@ class GmailAPIService(object):
         self.service = discovery.build('gmail', 'v1', credentials=self.credentials)
 
     def _validate(self):
+        # TODO (bill-x): Better validations
         if self.socialAccount.provider != 'google':
             raise
 
     @cached_property
     def credentials(self):
-        return GoogleCredentials(
-            access_token=self.socialToken.token,
-            client_id=self.socialToken.app.client_id,
-            client_secret=self.socialToken.app.secret,
-            refresh_token=self.socialToken.token_secret,
-            token_expiry=self.socialToken.expires_at,
-            token_uri=GOOGLE_TOKEN_URI,
-            user_agent='promo-grabber-agent/1.0',
-        )
+        return GoogleCredentialStorage(self.socialToken).get()
 
-    def getMessages(self, startDate, senders):
+    def getMessageIds(self, startDate, senders):
         fromTerms = map(lambda sender: '{}:{}'.format('from', sender), senders)
         searchQuery = self._query_or(fromTerms)
 
@@ -60,6 +55,7 @@ class GmailAPIService(object):
                 ).execute()
                 messages.extend(response['messages'])
         except errors.Error:
+            # TODO (bill-x): Custom exceptions
             raise
 
         return messages
