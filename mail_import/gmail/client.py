@@ -7,7 +7,7 @@ from oauth2client import GOOGLE_TOKEN_URI
 from .store import GoogleCredentialStorage
 
 
-class GmailAPIService(object):
+class GmailServiceClient(object):
     BATCH_SIZE = 1000
 
     def __init__(self, socialToken):
