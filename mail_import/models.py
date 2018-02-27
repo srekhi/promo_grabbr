@@ -1,3 +1,17 @@
+from django.contrib.auth.models import User
 from django.db import models
 
-# Create your models here.
+from .enums import EmailProvider
+
+
+class MessageMetaData(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    message_id = models.CharField(max_length=32, unique=True)
+    email_provider = models.CharField(max_length=32, choices=EmailProvider.choices(), default=EmailProvider.GMAIL)
+    date_sent = models.DateField()
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['message_id', 'email_provider']),
+        ]
+        unique_together = ('message_id', 'email_provider')
