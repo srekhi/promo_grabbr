@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'api',
     'mail_import',
     'promo_grabbr',
+    'promotion_companies',
 ]
 
 MIDDLEWARE = [
