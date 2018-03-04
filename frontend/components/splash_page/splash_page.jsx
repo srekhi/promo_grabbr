@@ -1,16 +1,17 @@
 import NavbarComponent from './nav_bar/nav_bar_component';
 import SessionFormContainer from './session_form/session_form_container';
-import VideoBackground from './video_background';
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
-
+import IntroText from './intro_text.jsx';
+import styles from './splash_page.css';
 
 const SplashPage = () => (
   <main>
     <NavbarComponent />
-    <AuthRoute path="/signup" component={SessionFormContainer} />
-    <AuthRoute path="/login" component={SessionFormContainer} />
-    <VideoBackground />
+    <div className='splash-page-intro'>
+	    <IntroText />
+	    <SessionFormContainer />
+	</div>
   </main>
 );
 

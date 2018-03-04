@@ -1,18 +1,24 @@
 .google-button {
-  height: 40px;
-  border-width: 0;
-  background: white;
-  color: #737373;
-  border-radius: 5px;
-  white-space: nowrap;
-  box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
-  transition-property: background-color, box-shadow;
-  transition-duration: 150ms;
-  transition-timing-function: ease-in-out;
-  padding: 0;
-  cursor:pointer;
+    display: block;
+    background: url(/img/home/google-logo.svg) no-repeat;
+    background-size: 18px 18px;
+    background-position: left 15px center;
+    font-family: "Gotham_SSm_5r", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    color: #000;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    line-height: 20px;
+    -webkit-font-smoothing: antialiased;
+    margin-left: 11%;
 }
     
+.google-button:hover {
+    border: 1px solid #2dbe60;
+}
+
 .google-button__icon {
   display: inline-block;
   vertical-align: middle;
@@ -29,8 +35,8 @@
 .google-button__text {
   display: inline-block;
   vertical-align: middle;
-  padding: 0 24px;
-  font-size: 14px;
+  padding: 18px 52px;
+  font-size: 19px;
   font-weight: bold;
   font-family: 'Roboto',arial,sans-serif;
 }

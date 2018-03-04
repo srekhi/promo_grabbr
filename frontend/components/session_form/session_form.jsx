@@ -43,71 +43,6 @@ class SessionForm extends React.Component {
     this.setState({username: "", password: ""});
   }
 
-  generateRandomUsername(){
-    let max = 3;
-    let min = 0;
-    let fakeNames = [faker.name.firstName().toLowerCase(), faker.name.lastName().toLowerCase(), faker.internet.userName().toLowerCase().slice(0,6)];
-    let randomIndex = Math.floor(Math.random() * (max - min)) + min;
-    return fakeNames[randomIndex];
-  }
-
-  generateRandomPassword(){
-    return faker.internet.password();
-  }
-
-  demoLogin(event) {
-    event.preventDefault();
-    // this.clearState();
-
-    // const savedUsername = "drake";
-    // const savedPassword = "password";
-    // const user = {username: savedUsername, password: savedPassword};
-    this.clearState();
-    let username = this.generateRandomUsername();
-    let password = this.generateRandomPassword();
-    const user = {username, password};
-
-    username = username.split('').reverse();
-    password = password.split('').reverse();
-
-    let timeout = 50;
-    const self = this;
-    let slowUserInput = setInterval( () => {
-      let oldVal = $(".login-input")[0].value;
-      $(".login-input")[0].value = oldVal + username.pop();
-      if (username.length === 0){
-        clearInterval(slowUserInput);
-        let slowPassInput = setInterval( () => {
-          let oldPassVal = $(".login-input")[1].value;
-          $(".login-input")[1].value = oldPassVal + password.pop();
-          if (password.length === 0){
-            clearInterval(slowPassInput);
-          }
-          if (username.length === 0 && password.length === 0){
-            self.props.signup(user).then(() => self.props.history.push("/"));
-          }
-        }, timeout);
-      }
-
-    }, timeout);
-
-   }
-
-
-  navLink() {
-    //USE THIS IN NAV BAR
-    if (this.props.formType === 'login') {
-      return (<span>
-        Dont have an account?  <Link to="/signup">Sign up</Link>
-    </span>);
-    } else {
-      return (<span>
-        Already have an account?
-        <Link to="/login">  Log in</Link>
-      </span>);
-    }
-  }
-
   renderErrors() {
     let error_exclamation = "";
     if (this.props.errors.length > 0){
@@ -128,9 +63,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    let capitalizedFormType = this.props.formType.charAt(0).toUpperCase() + this.props.formType.slice(1);
-    if (capitalizedFormType === "Signup") capitalizedFormType = "Sign up";
-    return (
+å    return (
         <div id="login-window">
           <form className="session-form" onSubmit={this.handleSubmit}>
             <h1> {capitalizedFormType} </h1>
