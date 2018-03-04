@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
     # Apps
     'api',
+    'mail_import',
     'promo_grabbr',
 ]
 
