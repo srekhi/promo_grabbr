@@ -12,6 +12,7 @@
     border-radius: 4px;
     line-height: 20px;
     -webkit-font-smoothing: antialiased;
+    margin-left: 11%;
 }
     
 .google-button:hover {

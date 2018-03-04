@@ -11,15 +11,7 @@ class Navbar extends React.Component {
 
   render(){
     return (
-      <nav className="landing-page-nav">
-        <section id="logo-container">
-          <Link id="landing-page-logo-link" to="/">PromoGrabbr</Link>
-          <p id="tagline">Don't miss a deal again.</p>
-        </section>
-        <section id="logo-container">
-          <p id="about-us">How does this work?</p>
-        </section>
-      </nav>
+      <p></p>
     );
   }
 }

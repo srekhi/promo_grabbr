@@ -3,16 +3,13 @@
     font-size: 16px;
     line-height: 22px;
     color: #000;
-    padding-top: 94px;
     max-width: 1220px;
     margin: 0 auto;
-    padding: 0 40px;
-    padding-right: 0px;
-    border-right: 1px solid #eee;
+    width: 602px;
 }
 
 .intro-text > h1 {
-    font-size: 70px;
+    font-size: 63px;
     line-height: 82px;
     margin-bottom: 15px;
 }
@@ -21,10 +18,12 @@
     font-size: 19px;
     line-height: 34px;
     margin-top: 10px;
+    line-height: 45px;
 }
 
 .intro-quotation {
     font-style: italic;
     color: gray;
     font-size: 19px;
+    line-height: 45px;
 }

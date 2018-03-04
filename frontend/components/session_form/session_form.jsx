@@ -63,7 +63,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    return (
+å    return (
         <div id="login-window">
           <form className="session-form" onSubmit={this.handleSubmit}>
             <h1> {capitalizedFormType} </h1>

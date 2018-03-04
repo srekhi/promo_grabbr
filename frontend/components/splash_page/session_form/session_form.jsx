@@ -36,8 +36,6 @@ class SessionForm extends React.Component {
     return (
         <div id="login-window">
           <form className="session-form">
-            <h3 className='cta'>Sign up below.</h3>
-            <br/>
             <AuthGoogleContainer />
             <small className='assurance'>We won't store any of your emails on our servers & we'll only scrape emails from the companies you let us.</small>
             {this.renderErrors()}

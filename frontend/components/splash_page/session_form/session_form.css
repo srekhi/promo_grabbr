@@ -32,10 +32,12 @@ body {
 }
 
 .session-form > h3 {
-  font-family: "Gotham_SSm_4r", Helvetica, Arial, sans-serif;
-  font-size: 23px;
-  line-height: 33px;
-  font-weight: 350;
+    font-family: "Gotham_SSm_4r", Helvetica, Arial, sans-serif;
+    font-size: 23px;
+    line-height: 33px;
+    font-weight: 350;
+     margin-top: 5%; 
+    margin-left: 26%;
 }
 
 #login-window {
@@ -166,13 +168,10 @@ i#splash-page-error-fa {
   color: #2ab27b;
 }
 
-.splash-page-intro {
-  display: flex;
-}
-
 .assurance {
-  font-family: "Gotham_SSm_4r", Helvetica, Arial, sans-serif;
-  font-size: 11px;
-  color: #989898;
-  margin-top: 22px;
+    font-family: "Gotham_SSm_4r", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    color: #989898;
+    margin-top: 8px;
+    display: inline-block;
 }
