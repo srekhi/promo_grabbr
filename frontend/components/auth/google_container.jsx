@@ -10,7 +10,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    googleLogin: authCode => dispatch(googleLogin(authCode))
+    googleLogin: authCode => dispatch(googleLogin(authCode)),
+    onError: errorMessage => dispatch(),
   };
 };
 

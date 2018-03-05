@@ -106,6 +106,12 @@ REST_FRAMEWORK = {
 
 ACCOUNT_USERNAME_REQUIRED = False
 
+# Django-Rest-Auth Settings
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'api.user.serializer.PGUserDetailsSerializer'
+}
+
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 

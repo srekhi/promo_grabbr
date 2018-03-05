@@ -12,9 +12,11 @@ class GoogleAuth extends React.Component {
 
     render() {
         const responseGoogle = (response) => {
-            console.log(response);
             if (response.code) {
                 this.props.googleLogin(response.code);
+            } else {
+                console.log(response);
+                this.props.onError('There was an error in authenticating with Google.');
             }
         }
 

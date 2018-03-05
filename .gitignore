@@ -1,5 +1,6 @@
 client_secret.json
 node_modules/
+promo_grabbr/static/
 bundle.js
 bundle.js.map
 ### Django ###

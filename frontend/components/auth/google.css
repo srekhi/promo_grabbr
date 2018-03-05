@@ -8,13 +8,13 @@
     text-decoration: none;
     text-align: center;
     color: #000;
+    cursor: pointer;
     border: 1px solid #d9d9d9;
     border-radius: 4px;
     line-height: 20px;
     -webkit-font-smoothing: antialiased;
-    margin-left: 11%;
 }
-    
+
 .google-button:hover {
     border: 1px solid #2dbe60;
 }
