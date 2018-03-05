@@ -1,7 +1,7 @@
 #new-company-button {
   background-color: #2ab27b;
   border: none;
-  width: 73px;
+  width: 83px;
   height: 45px;
   border-radius: 4px;
   font-size: 20px;
@@ -104,7 +104,7 @@
   overflow: hidden;
   overflow: hidden;
   overflow-y:scroll;
-  height: 90vh;
+  height: 50vh;
 }
 
 nav ul{
@@ -162,6 +162,7 @@ li.new-company-company-list-item:hover {
 
   .company-form {
     width: 45%;
+    margin-top: 2%; 
   }
 
   #wrap-name-and-button {
@@ -197,7 +198,7 @@ li.new-company-company-list-item:hover {
     position: relative;
   }
 
-  .selected-companies{
+  .selected-company{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -260,4 +261,24 @@ ul.error-list-new-company {
     font-size: 21px;
     color: red;
     margin-right: 60px;
+}
+
+.header-text {
+  color: #3D3C40;
+  font-size: 20px;
+  font-weight: 300;
+  display: -webkit-box;
+  width: 45%;
+  line-height: 26px;
+  margin-top: -5%;
+}
+
+.footer-text {
+  color: #3D3C40;
+  font-size: 15px;
+  font-weight: 300;
+  display: -webkit-box;
+  width: 45%;
+  line-height: 26px;
+  margin-top: -2%;
 }

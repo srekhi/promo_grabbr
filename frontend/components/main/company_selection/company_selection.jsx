@@ -1,15 +1,13 @@
 import React from 'react';
-// import AlertContainer from 'react-alert';
 import { withRouter } from 'react-router-dom';
-// import Spinner from '../../../spinner';
 import styles from './company_selection.css';
-
+import { fa, fa_times_circle_o } from '../../icons/icons';
 const COMPANY_LIST = [ // temporarily, will eventually be this.props.allCompanies
         { name: 'Postmates' }, 
         { name: 'Uber Eats' }, 
         { name: 'Doordash' }, 
         { name: 'Uber' } , 
-        { name:'Lyft' }
+        { name: 'Lyft' }
 ]
 class CompanySelection extends React.Component {
   constructor(props) {
@@ -19,6 +17,7 @@ class CompanySelection extends React.Component {
       searchText: '',
       selectedCompanies: [], // TODO (Sunny): Replace this with this.props.userCompanies when fetch API call is written.
       filteredCompanies: [], // when user types in a company name, we filter out company list for search purpose. will also initialize to this.props.userCompanies.
+      clicked: false,
     };
     this.addCompanies = this.addCompanies.bind(this);
     this.selectCompany = this.selectCompany.bind(this);
@@ -58,15 +57,16 @@ class CompanySelection extends React.Component {
         this.props.addCompany(this.userId, company.id);
       }
     });
+
+    this.setState({ clicked: true} );
   }
 
   render() {
     const self = this;
     let selectedCompanies = this.state.selectedCompanies.map((selectedCompany) => (
       <li className="selected-company">
-         // <img /> use logo of company here at a later date.
         {selectedCompany.name}
-        <i id="delete-selected-company" className="fa fa-times-circle-o" aria-hidden="true" onClick={() => self.deselectCompany(selectedCompany)}></i>
+        <i id="delete-selected-company" className='fa fa-times-circle-o' aria-hidden="true" onClick={() => self.deselectCompany(selectedCompany)}></i>
       </li>
     ));
 
@@ -77,31 +77,41 @@ class CompanySelection extends React.Component {
         }
     });
 
+    if (this.state.clicked) {
+      const btn = <button onClick={this.addCompanies} id="new-company-button" type="submit" value="Submit">Submit</button>
+    } else {
+      const btn = <button id="new-company-button" type="submit" value="Submit">Submitted!</button>
+    }
+
+    const submittedText = "Recorded! We'll scan for deals from these companies in your inbox. If we find useful deals, we'll send them to your inbox.";
     // have some boolean that renders a success message if they click the submit button. don't close out of anything though.
     // this selection page is basically the entire home page for now.
     return (
-      <div id="new-company-window">
-        <form className="company-form">
-            <div id="wrap-name-and-button">
-            <input type="text"
-              id="new-company-add-companies-input"
-              value={this.state.searchText}
-              onChange={this.update('searchText')}
-              className="new-company-input"
-              placeholder="Filter by company name"
-            />
-            <button onClick={this.addCompanies} id="new-company-button" type="submit" value="Submit">Submit</button>
-          </div>
-          <section id="selected-companies">
-            <ul id="selected-company-list">
-              { selectedCompanies }
+        <div id="new-company-window">
+          <div className='header-text'>We'll send you direct emails when the companies you select have sent you massive, short-lived deals.
+           No more digging through your spam to find great deals.</div>
+          <form className="company-form">
+              <div id="wrap-name-and-button">
+              <input type="text"
+                id="new-company-add-companies-input"
+                value={this.state.searchText}
+                onChange={this.update('searchText')}
+                className="new-company-input"
+                placeholder="Filter by company name"
+              />
+              <button onClick={this.addCompanies} id="new-company-button" type="submit" value="Submit">Submit</button>
+            </div>
+            <section id="selected-companies">
+              <ul id="selected-company-list">
+                { selectedCompanies }
+              </ul>
+            </section>
+            <ul id="new-company-form-list">
+              { filteredCompanyList }
             </ul>
-          </section>
-          <ul id="new-company-form-list">
-            { filteredCompanyList }
-          </ul>
-        </form>
-      </div>
+          </form>
+          <div className='footer-text'>{submittedText}</div>
+        </div>
     );
   }
 }
