@@ -1,8 +1,13 @@
-import * as APIUtil from '../util/auth_api';
+import * as AuthApi from '../util/auth_api';
+import getCurrentUser from '../util/session_api';
+import receiveCurrentUser from './session_actions';
 
 export const googleLogin = code => dispatch => (
-    APIUtil.googleAuth(code).then(res => {
+    AuthApi.googleAuth(code).then(res => {
         localStorage.setItem('token', res.key);
+        getCurrentUser().then(res => {
+            dispatch(receiveCurrentUser(res));
+        });
     }, err => {
         console.log(err);
     })
