@@ -4,132 +4,89 @@ import { withRouter } from 'react-router-dom';
 // import Spinner from '../../../spinner';
 import styles from './company_selection.css';
 
+const COMPANY_LIST = [ // temporarily, will eventually be this.props.allCompanies
+        { name: 'Postmates' }, 
+        { name: 'Uber Eats' }, 
+        { name: 'Doordash' }, 
+        { name: 'Uber' } , 
+        { name:'Lyft' }
+]
 class CompanySelection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      selectedCompanies: [] // TODO (Sunny): Replace this with this.props.companies when fetch API call is written.
+      searchText: '',
+      selectedCompanies: [], // TODO (Sunny): Replace this with this.props.userCompanies when fetch API call is written.
+      filteredCompanies: [], // when user types in a company name, we filter out company list for search purpose. will also initialize to this.props.userCompanies.
     };
-    this.renderErrors = this.renderErrors.bind(this);
-    this.addCompany = this.addCompany.bind(this);
-    this.alertOptions = {
-      offset: 14,
-      position: 'bottom left',
-      theme: 'dark',
-      time: 5000,
-      transition: 'scale'
-    };
-
-
+    this.addCompanies = this.addCompanies.bind(this);
     this.selectCompany = this.selectCompany.bind(this);
     this.deselectCompany = this.deselectCompany.bind(this);
+    this.userId = this.props.userId;
   }
 
   componentDidMount() {
     // this.props.fetchCompanies();
-    // when we have api call set up ^
+    // when we have api call set up ^ call the above.
   }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
   }
-  componentWillUnmount(){
-    // make the POST request here?
-  }
 
   selectCompany(company) {
     if (!this.state.selectedCompanies.includes(company)) {
-      let currentSelectedCompanies = this.state.selectedCompanies;
+      const currentSelectedCompanies = this.state.selectedCompanies;
       currentSelectedCompanies.push(company);
       this.setState({selectedCompanies: currentSelectedCompanies});
     }
   }
 
   deselectCompany(company) {
-    event.preventDefault();
-    let i = this.state.selectedCompanies.indexOf(company);
-    let newSelectedCompanies = this.state.selectedCompanies.slice(0, i).concat(this.state.selectedCompanies.slice(i+1));
+    const i = this.state.selectedCompanies.indexOf(company);
+    const newSelectedCompanies = this.state.selectedCompanies.slice(0, i).concat(this.state.selectedCompanies.slice(i+1));
     this.setState({selectedCompanies: newSelectedCompanies});
   }
 
   addCompanies(e) {
     e.preventDefault();
-    if (!this.state.selectedCompanies.includes(this.props.currentUser)){
-      this.state.selectedCompanies.push(this.props.currentUser);
-    }
-    if (this.props.name !== undefined) { this.state.name = this.props.name; }
-
-    let company = this.state;
-    company['user_ids'] = this.state.selectedCompanies.map(company => company.id);
-    this.props.addCompany(company).then( res => {
-      if (res.company !== undefined) {
-        this.props.fetchCompanies(this.props.currentUser.id);
-        this.props.history.push(`/messages/${res.company.id}`);
-        this.props.removeErrors();
+    this.state.selectedCompanies.forEach((company) => {
+      if (!this.props.userCompanies.includes(company)) {
+        this.props.addCompany(this.userId, company.id);
       }
     });
   }
 
-  renderErrors() {
-    let error_exclamation = "";
-    if (this.props.errors === undefined) return 'Loading...';
-    if (this.props.errors.length > 0){
-      error_exclamation = <i className="fa fa-exclamation" aria-hidden="true"></i>;
-    }
-    return(
-      <section className="errors-new-company">
-        <ul className="error-list-new-company">
-          <li id="new-company-error-fa">{error_exclamation}</li>
-          {this.props.errors.map((error, i) => (
-            <li id="new-company-error" className="create-company-error"  key={`error-${i}`}>
-                {error}
-            </li>
-          ))}
-        </ul>
-      </section>
-    );
-  }
-
   render() {
-    let header;
     const self = this;
     let selectedCompanies = this.state.selectedCompanies.map((selectedCompany) => (
       <li className="selected-company">
-         // <img /> use logo of company here.
+         // <img /> use logo of company here at a later date.
         {selectedCompany.name}
         <i id="delete-selected-company" className="fa fa-times-circle-o" aria-hidden="true" onClick={() => self.deselectCompany(selectedCompany)}></i>
       </li>
     ));
 
-    // eventually, this will say this.props.allCompanies
-    const allCompanies = [];
-    let filteredCompanies = allCompanies.filter(
-      (company) => {
-        return company.name.indexOf(this.state.allCompanies) !== -1;
-      }
-    );
-    // if (this.props.allCompanies === undefined) return <p>Loading...</p>; - eventually.
-
-    let companyList = filteredCompanies.map((company) => {
-      return(
-        <li onClick={() => this.selectCompany(company)} className="new-company-list-item">
-          <img id="company-dropdown-logo" alt="avatar" />
-          {company.name}
-        </li>
-    );
+    // when API call written out, COMPANY_LIST will be this.props.allCompanies
+    const filteredCompanyList = COMPANY_LIST.map((company) => {
+        if (company.name.toLowerCase().startsWith(this.state.searchText.toLowerCase())) {
+          return <li onClick={() => this.selectCompany(company)} className='new-company-list-item'>{company.name}</li>
+        }
     });
+
+    // have some boolean that renders a success message if they click the submit button. don't close out of anything though.
+    // this selection page is basically the entire home page for now.
     return (
       <div id="new-company-window">
         <form className="company-form">
-          {this.renderErrors()}
-          <h1>{header}</h1>
             <div id="wrap-name-and-button">
             <input type="text"
-              id="new-company-add-Companies-input"
-              value={this.state.allCompanies}
-              onChange={this.update('allCompanies')}
+              id="new-company-add-companies-input"
+              value={this.state.searchText}
+              onChange={this.update('searchText')}
               className="new-company-input"
               placeholder="Filter by company name"
             />
@@ -140,8 +97,8 @@ class CompanySelection extends React.Component {
               { selectedCompanies }
             </ul>
           </section>
-          <ul id="new-company-form-list" >
-            {companyList}
+          <ul id="new-company-form-list">
+            { filteredCompanyList }
           </ul>
         </form>
       </div>
