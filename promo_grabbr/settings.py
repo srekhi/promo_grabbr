@@ -111,7 +111,7 @@ ACCOUNT_USERNAME_REQUIRED = False
 # Django-Rest-Auth Settings
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'api.user.serializer.PGUserDetailsSerializer'
+    'USER_DETAILS_SERIALIZER': 'api.user.serializers.PGUserDetailsSerializer'
 }
 
 # Database
