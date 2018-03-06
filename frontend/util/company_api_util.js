@@ -1,23 +1,31 @@
-export const fetchCompanies = (user_id) => (
+export const fetchCompanies = () => (
   $.ajax({
     method: 'GET',
-    url: `/api/companies/`,
-    data: { user_id }
+    url: `/api/user_companies`,
+    headers: {
+      "Authorization": localStorage.getItem('token')
+    }
   })
 );
 
-export const addCompany = (company_id, user_id) => (
+export const addCompanies = (company_names) => (
   $.ajax({
-    method: 'POST',
-    url: `/api/companies/`,
-    data: { user_id, company_id }
+    method: 'PUT',
+    url: `/api/user_companies`,
+    data: { company_names },
+    headers: {
+      "Authorization": localStorage.getItem('token')
+    }
   })
 );
 
-export const removeCompany = (company_id, user_id) => (
+export const removeCompanies = (company_names) => (
   $.ajax({
     method: 'DELETE',
-    url: `/api/companies/`,
-    data: { user_id, company_id }
+    url: `/api/user_companies`,
+    data: { company_names },
+    headers: {
+      "Authorization": localStorage.getItem('token')
+    }
   })
 );
