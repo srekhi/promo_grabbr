@@ -33,6 +33,6 @@ export const fetchCompanies = () => (dispatch) => (
 	)
 );
 
-export const addCompany = (company_names) => (dispatch) => (
+export const addCompanies = (company_names) => (dispatch) => (
 	APIUtil.addCompanies(company_names).then((companies) => dispatch(receiveCompanies(companies)))
 );
