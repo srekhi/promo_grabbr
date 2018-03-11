@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchCompanies: (userId) => dispatch(fetchCompanies(userId)),
+  fetchCompanies: () => dispatch(fetchCompanies()),
   addCompany: (userId) => dispatch(addCompany(userId, companyId))
 });
 

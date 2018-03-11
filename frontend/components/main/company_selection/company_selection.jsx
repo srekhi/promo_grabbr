@@ -3,11 +3,11 @@ import { withRouter } from 'react-router-dom';
 import styles from './company_selection.css';
 import { fa, fa_times_circle_o } from '../../icons/icons';
 const COMPANY_LIST = [ // temporarily, will eventually be this.props.allCompanies
-        { name: 'Postmates' }, 
-        { name: 'Uber Eats' }, 
-        { name: 'Doordash' }, 
-        { name: 'Uber' } , 
-        { name: 'Lyft' }
+  { name: 'Postmates' },
+  { name: 'Uber Eats' },
+  { name: 'Doordash' },
+  { name: 'Uber' },
+  { name: 'Lyft' }
 ]
 class CompanySelection extends React.Component {
   constructor(props) {
@@ -26,8 +26,7 @@ class CompanySelection extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchCompanies();
-    // when we have api call set up ^ call the above.
+    this.props.fetchCompanies();
   }
 
   update(field) {
