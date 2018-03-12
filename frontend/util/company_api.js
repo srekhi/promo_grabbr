@@ -3,7 +3,7 @@ export const fetchCompanies = () => (
     method: 'GET',
     url: `/api/user_companies`,
     headers: {
-      "Authorization": localStorage.getItem('token')
+      "Authorization": "Token " + localStorage.getItem('token')
     }
   })
 );
@@ -14,7 +14,7 @@ export const addCompanies = (company_names) => (
     url: `/api/user_companies`,
     data: { company_names },
     headers: {
-      "Authorization": localStorage.getItem('token')
+      "Authorization": "Token " + localStorage.getItem('token')
     }
   })
 );
@@ -25,7 +25,7 @@ export const removeCompanies = (company_names) => (
     url: `/api/user_companies`,
     data: { company_names },
     headers: {
-      "Authorization": localStorage.getItem('token')
+      "Authorization": "Token " + localStorage.getItem('token')
     }
   })
 );
