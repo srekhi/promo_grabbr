@@ -27,14 +27,7 @@ class GmailServiceClient(object):
     def credentials(self):
         return GoogleCredentialStorage(self.socialToken).get()
 
-    def getMessageIds(self, startDate, senders):
-        fromTerms = map(lambda sender: '{}:{}'.format('from', sender), senders)
-        searchQuery = self._query_or(fromTerms)
-
-        if startDate:
-            dateTerm = 'newer:{}'.format(startDate.strftime('%Y/%m/%d'))
-            searchQuery = self._query_and([dateTerm, searchQuery])
-
+    def getMessageIds(self, searchQuery):
         messages = []
 
         try:
@@ -58,7 +51,7 @@ class GmailServiceClient(object):
             # TODO (bill-x): Custom exceptions
             raise
 
-        return messages
+        return {message['id'] for message in messages}
 
     def getMessages(self, messageIds, callbackSuccess, callbackFail=None):
         """
@@ -89,13 +82,13 @@ class GmailServiceClient(object):
             batch.execute()
 
     @classmethod
-    def _query_term(cls, searchType, value):
+    def query_term(cls, searchType, value):
         return '{}:{}'.format(searchType, value)
 
     @classmethod
-    def _query_or(cls, searchTerms):
+    def query_or(cls, searchTerms):
         return '( {} )'.format(' OR '.join(searchTerms))
 
     @classmethod
-    def _query_and(cls, searchTerms):
+    def query_and(cls, searchTerms):
         return '( {} )'.format(' '.join(searchTerms))
