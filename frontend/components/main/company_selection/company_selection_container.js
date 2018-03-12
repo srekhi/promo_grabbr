@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchCompanies, addCompany } from '../../../actions/company_actions';
+import { fetchCompanies, addCompanies } from '../../../actions/company_actions';
 
 import CompanySelection from './company_selection';
 
@@ -9,8 +9,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchCompanies: (userId) => dispatch(fetchCompanies(userId)),
-  addCompany: (userId) => dispatch(addCompany(userId, companyId))
+  fetchCompanies: () => dispatch(fetchCompanies()),
+  addCompany: (userId) => dispatch(addCompanies(companyNames))
 });
 
 

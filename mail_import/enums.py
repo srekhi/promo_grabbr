@@ -1,4 +1,4 @@
-from .utils import ChoiceEnum
+from utils.enum_choices import ChoiceEnum
 
 
 class EmailProvider(ChoiceEnum):

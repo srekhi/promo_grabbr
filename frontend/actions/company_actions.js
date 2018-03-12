@@ -1,4 +1,4 @@
-import * as APIUtil from '../util/company_api_util';
+import * as APIUtil from '../util/company_api';
 
 export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
@@ -25,14 +25,14 @@ export const receiveErrors = errors => ({
   errors
 });
 
-export const fetchCompanies = (user_id) => (dispatch) => (
-	APIUtil.fetchCompanies(user_id).then((companies) => (
+export const fetchCompanies = () => (dispatch) => (
+	APIUtil.fetchCompanies().then((companies) => (
 		dispatch(receiveCompanies(companies))
 	)), (err) => (
 		dispatch(receiveErrors(err.responseJSON))
 	)
 );
 
-export const addCompany = (user_id, company_id) => (dispatch) => (
-	APIUtil.fetchCompanies(user_id, company_id).then((companies) => dispatch(receiveCompanies(companies)))
+export const addCompanies = (company_names) => (dispatch) => (
+	APIUtil.addCompanies(company_names).then((companies) => dispatch(receiveCompanies(companies)))
 );
